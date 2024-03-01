@@ -1,0 +1,279 @@
+/* Общие стили */
+
+body {
+    background: url(pictures/bg.jpg) center no-repeat;
+    background-color: #000000;
+    color: #fff;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    font-size: 17px;
+}
+
+header,
+nav,
+main,
+footer {
+    padding: 20px;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Стили для главной страницы */
+
+h1 {
+    color: #ff8c00; /* оранжевый цвет */
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+p {
+    word-wrap: break-word;
+}
+
+.content-wrapper img {
+    margin-left: 50px; /* добавьте нужный вам отступ между картинкой и текстом */
+}
+
+/* Стили для страницы меню */
+
+h1 {
+    color: #ff8c00; /* оранжевый цвет */
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.card_group {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+}
+
+.card {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    width: 200px;
+}
+
+.card img {
+    width: 100%;
+    max-height: 200px;
+    border-radius: 10px; /* Скругление углов */
+    box-shadow: 0 5px 10px rgb(255, 255, 255); /* Тень */
+}
+
+p.card-text {
+    height: 100px;
+    text-align: center;
+}
+
+.card-text {
+    text-align: center;
+}
+
+/* Стили для страницы контактов */
+
+h1 {
+    color: #ff8c00; /* оранжевый цвет */
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+/* Дополнительные стили для дизайна */
+
+header {
+    background-color: rgba(241, 157, 0, 0.664); /* оранжевый с прозрачностью */
+}
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.time .flex-item{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90px; /* Изменяем ширину элемента */
+    height: 50px; /* Изменяем высоту элемента */
+    margin: 80px; /* Изменяем отступы элементов */
+    color: #000000;
+}
+/* Стили только для страницы "matches.html" */
+.matches .flex-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 650px; /* Изменяем ширину элемента */
+    height: 100px; /* Изменяем высоту элемента */
+    margin: 80px; /* Изменяем отступы элементов */
+}
+
+.flex-item {
+    width: 100%;
+    max-width: 500px;
+    max-height: 300px;
+    margin: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.flex-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Новое свойство, обеспечивающее, что изображение будет вписываться в блок */
+    border-radius: 10px;
+}
+.flex-item h2 {
+    font-weight: bold;
+}
+
+.flex-item p {
+    margin-top: 10px;
+}
+
+.important {
+    width: 300px;
+    height: 300px;
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-left: 0px; /* Добавляем отступ слева для лого и названия */
+    margin-right: 70px;
+}
+
+nav {
+    width: 100%;
+    height: 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ff8c00;
+    display: flex;
+    justify-content: center; /* Центрируем кнопки по горизонтали */
+    align-items: center;
+}
+
+/* Остальные стили остаются без изменений */
+
+
+.logo img {
+    height: 74px; /* Подберите высоту для вашего лого */
+    margin-left: -825px; /* Добавляем отступ между лого и названием */
+}
+
+.title {
+    color: rgb(0, 0, 0); /* Цвет названия */
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-left: -550px;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 30px;
+}
+
+nav ul li a {
+    display: block;
+    padding: 20px 40px;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #ff8c00;
+    transform: skew(-20deg);
+    transition: transform 0.3s;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5); /* Добавляем обводку с тёмным оранжевым цветом */
+}
+
+nav ul li a:hover {
+    transform: skew(-20deg) scale(1.1);
+}
+
+main {
+    background-color: rgba(0, 0, 0, 0.664); /* черный с прозрачностью */
+    color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgb(255, 255, 255);
+    padding: 20px;
+    max-width: 1000px;
+}
+
+/* новости */
+.text-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+}
+
+.text-overlay h2 {
+    margin: 0;
+    font-size: 18px; /* Измените размер заголовка по вашему усмотрению */
+    line-height: 1.3;
+}
+
+.text-overlay p {
+    margin: 0;
+    font-size: 14px; /* Измените размер текста по вашему усмотрению */
+    line-height: 1.3;
+}
+
+
+
+
+
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #e2d73ccc;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
