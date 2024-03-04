@@ -21,13 +21,13 @@
     </nav>
     <div class="flex-container">
         {% for news in news_list %}
-            <div class="flex-item">
-                <img src="{{ news.image.url }}" alt="{{ news.title }}">
-                <div class="text-overlay">
-                    <h2>{{ news.title }}</h2>
-                    <p>{{ news.summary|truncatewords:10 }}</p>
-                </div>
+        <div class="flex-item">
+            <img src="{{ news.image.url }}" alt="{{ news.title }}">
+            <div class="text-overlay">
+                <h2>{{ news.title }}</h2>
+                <p>{{ news.summary|truncatewords:10 }}</p>
             </div>
+        </div>
         {% endfor %}
     </div>
 </body>

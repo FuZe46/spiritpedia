@@ -143,6 +143,8 @@ header {
 
 .flex-item {
     width: 100%;
+    height: auto;
+    text-align: center;
     max-width: 500px;
     max-height: 300px;
     margin: 20px;
@@ -150,6 +152,7 @@ header {
     border-radius: 10px;
     padding: 10px;
     overflow: hidden;
+    position: relative;
 }
 
 .flex-item img {
@@ -243,8 +246,9 @@ main {
 .text-overlay {
     position: absolute;
     bottom: 0;
-    left: 0;
-    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 10px;
     background: rgba(255, 255, 255, 0.8);
     overflow: hidden;
