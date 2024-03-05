@@ -14,4 +14,5 @@ urlpatterns = [
     path('tournaments', views.tournaments, name='tournaments'),
     path('upload_news', views.upload_news, name='upload_news'),
     path('news/<int:pk>/', views.news_detail, name='news_detail'),
+    path('news_detail/<int:pk>/', views.news_detail, name='news_detail'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

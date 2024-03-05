@@ -7,10 +7,25 @@
 </head>
 <body>
     <nav>
-        <!-- ваша навигация -->
+        <div class="logo">
+            <a href="index">
+                <img src="{% static 'pictures/logo.png' %}" alt="{% static 'pictures/default.png' %}">
+            </a>
+            <span class="title"></span>
+        </div>
+        <ul>
+            <li><a href="news">Новости</a></li>
+            <li><a href="guids">Гайды</a></li>
+            <li><a href="matches">Матчи</a></li>
+            <li><a href="tournaments">Турниры</a></li>
+        </ul>
     </nav>
-    <img src="{{ news_item.image.url }}" alt="{{ news_item.title }}">
-    <h2>{{ news_item.title }}</h2>
-    <p>{{ news_item.summary }}</p>
+    <div class="news-container">
+        <img src="{{ news_item.image.url }}" alt="{{ news_item.title }}">
+        <div class="news-text">
+            <h2>{{ news_item.title }}</h2>
+            <p>{{ news_item.summary }}</p>
+        </div>
+    </div>
 </body>
 </html>
