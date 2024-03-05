@@ -7,7 +7,7 @@
 <body>
     <nav>
         <div class="logo">
-            <a href="">
+            <a href="index">
                 <img src="{% static 'pictures/logo.png' %}" alt="{% static 'pictures/default.png' %}">
             </a>
             <span class="title"></span>
@@ -22,11 +22,13 @@
     <div class="flex-container">
         {% for news in news_list %}
         <div class="flex-item">
-            <img src="{{ news.image.url }}" alt="{{ news.title }}">
-            <div class="text-overlay">
-                <h2>{{ news.title }}</h2>
-                <p>{{ news.summary|truncatewords:10 }}</p>
-            </div>
+            <a href="{% url 'news_detail' news.pk %}">
+                <img src="{{ news.image.url }}" alt="{{ news.title }}">
+                <div class="text-overlay">
+                    <h2>{{ news.title }}</h2>
+                    <p>{{ news.summary|truncatewords:10 }}</p>
+                </div>
+            </a>
         </div>
         {% endfor %}
     </div>

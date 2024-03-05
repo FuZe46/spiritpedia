@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ news_item.title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <nav>
+        <!-- ваша навигация -->
+    </nav>
+    <img src="{{ news_item.image.url }}" alt="{{ news_item.title }}">
+    <h2>{{ news_item.title }}</h2>
+    <p>{{ news_item.summary }}</p>
+</body>
+</html>
