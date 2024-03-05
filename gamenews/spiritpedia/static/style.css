@@ -118,7 +118,22 @@ header {
     gap: 20px;
     align-items: center;
     width: 1;
-    max-width: 1046px;
+    max-width: 100%;
+    /* margin-top: 20px; */
+    margin: 91px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    /* min-width: 332px; */
+}
+.index-flex-container {
+    /* flex: 1 1; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    width: 1;
+    max-width: 1000px;
     /* margin-top: 20px; */
     margin: 91px auto;
     padding: 20px;
@@ -151,8 +166,7 @@ header {
     height: auto;
     text-align: center;
     max-width: 450px; 
-    min-height: 332px;
-    max-height: 300px;
+    min-height: 320px;
     /* margin: 20px; */
     flex: 1 1;
     background-color: #ffffff;
@@ -174,11 +188,11 @@ header {
 }
 .flex-item h2 {
     font-weight: bold;
-    color: #ffffff;
+    color: #000000;
 }
 .flex-item h3 {
     font-weight: bold;
-    color: #ffffff;
+    color: #000000;
 }
 .flex-item h4 {
     
@@ -204,22 +218,25 @@ header {
 }
 
 nav {
-    width: 100%;
-    height: 30px;
+    width: 100%; /* Ширина навигационной строки занимает 100% ширины экрана */
+    height: 3%; /* Высота навигационной строки */
     position: fixed;
     top: 0;
     left: 0;
     background-color: #ff8c00;
     display: flex;
-    justify-content: center; /* Центрируем кнопки по горизонтали */
+    justify-content: center;
     align-items: center;
+    z-index: 999;
 }
+
+
 
 /* Остальные стили остаются без изменений */
 
 
 .logo img {
-    height: 74px; /* Подберите высоту для вашего лого */
+    height: 74px;
     margin-left: -825px; /* Добавляем отступ между лого и названием */
 }
 
@@ -267,17 +284,19 @@ main {
 .text-overlay {
     /* position: absolute; */
     /* bottom: 0; */
+    color: #000;
     display: flex;
     flex-direction: column;
     justify-content: center;
     /* max-height: 200px; */
-    padding: 10px;
+    padding: 0px;
     /* height: 100%; */
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 0.8);
     overflow: hidden;
 }
 
 .text-overlay h2 {
+    color: #000;
     margin: 0;
     font-size: 18px; /* Измените размер заголовка по вашему усмотрению */
     line-height: 1.3;
