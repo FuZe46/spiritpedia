@@ -19,7 +19,34 @@
             <li><a href="/tournaments">Турниры</a></li>
         </ul>
     </nav>
+	<div class="index-flex-container">
+		<div class="tab-wrap">
+			<!-- active tab on page load gets checked attribute -->
+			<input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
+			<label for="tab1">Прошлые</label>
 
+			<input type="radio" id="tab2" name="tabGroup1" class="tab">
+			<label for="tab2">Текущие</label>
 
+			<input type="radio" id="tab3" name="tabGroup1" class="tab">
+			<label for="tab3">Будущие</label>
+
+			<div class="tab__content">
+			  <h3>Прошлые турниры</h3>
+			  <p>текст</p>
+			</div>
+
+			<div class="tab__content">
+			  <h3>Текущие турниры</h3>
+			  <p>текст</p>
+			 </div>
+
+			<div class="tab__content">
+			  <h3>Будущие турниры</h3>
+			  <p>текст</p>
+			</div>
+
+		</div>
+	</div>
 </body>
 </html>
