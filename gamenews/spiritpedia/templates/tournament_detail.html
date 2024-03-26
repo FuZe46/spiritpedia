@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>{{ tournament.name }}</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="/">
+                <img src="{% static 'pictures/logo.png' %}" alt="{% static 'pictures/default.png' %}">
+            </a>
+            <span class="title"></span>
+        </div>
+        <ul>
+            <li><a href="/news">Новости</a></li>
+            <li><a href="/guids">Гайды</a></li>
+            <li><a href="/matches">Матчи</a></li>
+            <li><a href="/tournaments">Турниры</a></li>
+        </ul>
+    </nav>
+    <h1>{{ tournament.name }}</h1>
+    <img src="{{ tournament.logo.url }}" alt="{{ tournament.name }}" style="max-height: 400px; max-width: 6000px;">
+
+    <p>{{ tournament.game.name }}</p>
+    <p>{{ tournament.start_date }} - {{ tournament.end_date }}</p>
+    <p>Призовой фонд: {{ tournament.prize_pool }}</p>
+
+    <h2>Команды-участницы</h2>
+    <ul>
+        {% for team in tournament.teams.all %}
+        <li><a href="{% url 'team_detail' team.id %}">{{ team.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Список встреч</h2>
+    <ul>
+        {% for match in tournament.matches.all %}
+        <li><a href="{% url 'match_detail' match.id %}">{{ match.team1.name }} vs {{ match.team2.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
