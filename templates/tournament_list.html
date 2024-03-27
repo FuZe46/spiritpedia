@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <style>
+        .filter-option {
+            cursor: pointer; /* Изменение курсора при наведении */
+        }
+        
+        /* Стили для активного фильтра */
+        .active-filter {
+            border-bottom: 2px solid #ff8c00; /* Цвет подчеркивания активного фильтра */
+        }
+    </style>
+    <title>Турниры</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="/">
+                <img src="{% static 'pictures/logo.png' %}" alt="{% static 'pictures/default.png' %}">
+            </a>
+            <span class="title"></span>
+        </div>
+        <ul>
+            <li><a href="/news">Новости</a></li>
+            <li><a href="/guids">Гайды</a></li>
+            <li><a href="/matches">Матчи</a></li>
+            <li><a href="/tournaments">Турниры</a></li>
+        </ul>
+    </nav>
+    <h1>Турниры</h1>
+    <form id="filter-form" action="{% url 'tournament_list' %}" method="get">
+        <label for="filter_game">Игра:</label>
+        <select name="game" id="filter_game">
+            {% for game in games %}
+            <option value="{{ game.id }}">
+                <img src="{{ game.logo.url }}" alt="{{ game.game }}" style="height: 20px; margin-right: 5px;">
+            </option>
+            {% endfor %}
+        </select>
+
+        <label for="filter_status">Статус:</label>
+        <div id="filter_status">
+            <span class="filter-option" data-status="current">Текущие</span>
+            <span class="filter-option" data-status="past">Прошедшие</span>
+            <span class="filter-option" data-status="future">Будущие</span>
+        </div>
+
+        <input type="hidden" name="status" value=""> <!-- Скрытое поле для передачи статуса фильтрации -->
+    </form>
+
+    <script>
+        // Отслеживаем клик на элементах фильтрации по статусу и отправляем форму
+        document.querySelectorAll('#filter_status .filter-option').forEach(function(element) {
+            element.addEventListener('click', function() {
+                // Удаляем класс .active-filter у всех элементов
+                document.querySelectorAll('#filter_status .filter-option').forEach(function(el) {
+                    el.classList.remove('active-filter');
+                });
+                
+                // Устанавливаем класс .active-filter для выбранного элемента
+                this.classList.add('active-filter');
+                
+                var status = this.dataset.status;
+                var currentStatus = document.querySelector('#filter-form input[name="status"]').value;
+                if (status === currentStatus) {
+                    // Если текущий статус совпадает с выбранным, сбрасываем фильтр
+                    document.querySelector('#filter-form input[name="status"]').value = "";
+                } else {
+                    // Иначе устанавливаем выбранный статус
+                    document.querySelector('#filter-form input[name="status"]').value = status;
+                }
+                document.getElementById('filter-form').submit();
+            });
+        });
+    </script>
+
+    {% for tournament in tournaments %}
+    <div class="tournament">
+        <a href="{% url 'tournament_detail' tournament.id %}">
+            <img src="{{ tournament.logo.url }}" alt="{{ tournament.name }}" style="max-height: 300px; max-width: 450px;">
+            <h2>{{ tournament.name }}</h2>
+        </a>
+    
+        <p>{{ tournament.game.name }}</p>
+        <p>{{ tournament.start_date }} - {{ tournament.end_date }}</p>
+        <p>{{ tournament.prize_pool }}</p>
+    </div>
+    {% endfor %}
+
+    {% if not tournaments %}
+    <p>Турниров не найдено.</p>
+    {% endif %}
+</body>
+</html>

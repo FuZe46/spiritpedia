@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="/">
+                <img src="{% static 'pictures/logo.png' %}" alt="{% static 'pictures/default.png' %}">
+            </a>
+            <span class="title"></span>
+        </div>
+        <ul>
+            <li><a href="/news">Новости</a></li>
+            <li><a href="/guids">Гайды</a></li>
+            <li><a href="/matches">Матчи</a></li>
+            <li><a href="/tournaments">Турниры</a></li>
+        </ul>
+    </nav>
+
+    <div class="flex-container">
+        <div class="flex-item">
+            <a href="https://terraria.fandom.com/ru/wiki/Руководство:Прохождение_игры">
+            <img src="{% static 'pictures/terraria.jpg' %}" alt="">
+            <h4>Гайд по игре Terraria</h4>
+        </div>
+    </div>
+</body>
+</html>

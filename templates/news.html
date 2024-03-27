@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="/">
+                <img src="{% static 'pictures/logo.png' %}" alt="{% static 'pictures/default.png' %}">
+            </a>
+            <span class="title"></span>
+        </div>
+        <ul>
+            <li><a href="/news">Новости</a></li>
+            <li><a href="/guids">Гайды</a></li>
+            <li><a href="/matches">Матчи</a></li>
+            <li><a href="/tournaments">Турниры</a></li>
+        </ul>
+    </nav>
+    <div class="flex-container">
+        {% for news in news_list %}
+        <div class="flex-item">
+            <a href="{% url 'news_detail' news.pk %}">
+                <img src="{{ news.image.url }}" alt="{{ news.title }}">
+                <div class="text-overlay">
+                    <h2>{{ news.title }}</h2>
+                    <p>{{ news.summary|truncatewords:10 }}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

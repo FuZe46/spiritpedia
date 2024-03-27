@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <style>
+        /* Стили для списка матчей */
+        .match {
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #353030;
+        }
+        .team-logo {
+            max-height: 50px;
+            max-width: 50px;
+        }
+        .team-name {
+            display: inline-block;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .tournament-name {
+            font-style: italic;
+        }
+        .score {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="/">
+                <img src="{% static 'pictures/logo.png' %}" alt="{% static 'pictures/default.png' %}">
+            </a>
+            <span class="title"></span>
+        </div>
+        <ul>
+            <li><a href="/news">Новости</a></li>
+            <li><a href="/guids">Гайды</a></li>
+            <li><a href="/matches">Матчи</a></li>
+            <li><a href="/tournaments">Турниры</a></li>
+        </ul>
+    </nav>
+
+    <h1>Список матчей</h1>
+    <div class="matches">
+        {% for match in tournament.matches.all %}
+            <a href="{% url 'match_detail' match.id %}">
+            <div class="match">
+                <img src="{{ match.team1.logo.url }}" alt="{{ match.team1.name }}" class="team-logo">
+                <span class="team-name">{{ match.team1.name }}</span>
+                <div class="score">{{ match.team1_score }}</div>
+                <span>:</span>
+                <div class="score">{{ match.team2_score }}</div>
+                <span class="team-name">{{ match.team2.name }}</span>
+                <img src="{{ match.team2.logo.url }}" alt="{{ match.team2.name }}" class="team-logo">
+                <br>
+                <span class="tournament-name">Турнир: {{ match.tournament.name }}</span>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>{{ tournament.name }}</title>
+    <style>
+        /* Стили для сетки турнира */
+        .tournament-bracket {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .round {
+            width: calc(33.33% - 20px);
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .round h3 {
+            margin-top: 0;
+        }
+        .match {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .team {
+            flex: 1;
+        }
+        .score {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="/">
+                <img src="{% static 'pictures/logo.png' %}" alt="{% static 'pictures/default.png' %}">
+            </a>
+            <span class="title"></span>
+        </div>
+        <ul>
+            <li><a href="/news">Новости</a></li>
+            <li><a href="/guids">Гайды</a></li>
+            <li><a href="/matches">Матчи</a></li>
+            <li><a href="/tournaments">Турниры</a></li>
+        </ul>
+    </nav>
+    <h1>{{ tournament.name }}</h1>
+    <div class="tournament-info">
+      <img src="{{ tournament.logo.url }}" alt="{{ tournament.name }}" style="max-height: 400px; max-width: 600px;">
+      <p>{{ tournament.game.name }}</p>
+      <p>{{ tournament.start_date }} - {{ tournament.end_date }}</p>
+      <p>Призовой фонд: {{ tournament.prize_pool }}</p>
+    </div>
+  
+    <h2>Команды-участницы</h2>
+    <ul class="participants">
+      {% for team in tournament.teams.all %}
+        <li><a href="{% url 'team_detail' team.id %}">{{ team.name }}</a></li>
+      {% endfor %}
+    </ul>
+  
+    <h2>Сетка турнира</h2>
+    <section class="tournament-bracket">
+      {% for round in tournament.rounds.all %}
+        <div class="round">
+          <h3>{{ round.name }}</h3>
+          <ul>
+            {% for match in round.matches.all %}
+              <li class="match">
+                <span class="team">{{ match.team1.name }}</span>
+                {% if match.score_1 is not null and match.score_2 is not null %}
+                  <span class="score">{{ match.score_1 }} : {{ match.score_2 }}</span>
+                {% else %}
+                  <span class="score">- : -</span>
+                {% endif %}
+                <span class="team">{{ match.team2.name }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </section>
+  
+    <h2>Список встреч</h2>
+    <ul class="match-list">
+      {% for match in tournament.matches.all %}
+        <li><a href="{% url 'match_detail' match.id %}">{{ match.team1.name }} vs {{ match.team2.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </body>
+  </html>
